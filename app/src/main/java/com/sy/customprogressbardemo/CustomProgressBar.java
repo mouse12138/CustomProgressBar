@@ -12,8 +12,8 @@ import android.view.View;
  */
 
 public class CustomProgressBar extends View {
-    private final int CIRCLE_NUM = 3;
-    private int full = 1;
+    private int circle_num = 3;
+    private int full = 0;
     private Paint mStorke_paint;
     private Paint mFill_paint;
 
@@ -34,18 +34,26 @@ public class CustomProgressBar extends View {
         return full;
     }
 
-    public void setFull(int full) {
+    public int setFull(int full) {
         this.full = full;
         if (full < 0) {
             this.full = 0;
         }
 
-        if (full > CIRCLE_NUM) {
-            this.full = CIRCLE_NUM;
+        if (full > circle_num) {
+            this.full = circle_num;
         }
         invalidate();
+        return full;
     }
 
+    public int getCircle_num() {
+        return circle_num;
+    }
+
+    public void setCircle_num(int circle_num) {
+        this.circle_num = circle_num;
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -66,16 +74,24 @@ public class CustomProgressBar extends View {
             centerX += 48;
         }
 
-        for (int i = 0; i < CIRCLE_NUM - full; i++) {
+        for (int i = 0; i < circle_num - full; i++) {
             canvas.drawCircle(centerX, 10, 8, mStorke_paint);
             centerX += 48;
         }
 
         int lineX = 18;
-        for (int j = 0; j < CIRCLE_NUM - 1; j++) {
+        for (int j = 0; j < circle_num - 1; j++) {
             canvas.drawLine(lineX, 10, lineX + 32, 10, mFill_paint);
             lineX += 48;
         }
+    }
+
+    public int add() {
+        return setFull(++full);
+    }
+
+    public int sub() {
+        return setFull(--full);
     }
 
     @Override
