@@ -27,6 +27,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 mCpb_one.add();
+
             }
         });
         mBtn_sub.setOnClickListener(new View.OnClickListener() {
