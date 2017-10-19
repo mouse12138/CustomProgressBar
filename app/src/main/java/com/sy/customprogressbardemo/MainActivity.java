@@ -1,12 +1,9 @@
 package com.sy.customprogressbardemo;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
-import static android.R.attr.id;
 
 public class MainActivity extends Activity {
 
@@ -33,6 +30,7 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 mCpb_one.sub();
+
             }
         });
     }
